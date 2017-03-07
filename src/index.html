@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>上下学</title>
+    <meta name="keywords" content="上下学">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <link rel="shortcut icon" href="" type="image/png">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KbYVkobh6YxXQqyFDm7INWyDhmVdwz34"></script>
+    <script src="/js/lib/flexible.js" inline></script>
+    <link rel="stylesheet" href="less/index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="view header-inner global-padding">
+            <a href="/" class="header-logo"></a>
+            <div class="header-nav">
+                <div class="header-nav-links">
+                    <a href="index.html" class="header-nav-link selected">首页</a>
+                    <a href="faq.html" class="header-nav-link">服务FAQ</a>
+                </div>
+                <span href="#" class="button header-nav-button" id="buy-button">购买服务</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="global-padding banner">
+        <div class="view banner-inner">
+            <div class="banner-pic"></div>
+            <div class="banner-desc">
+                <div class="banner-desc-inner">
+                    <h4>让孩子出行更省心</h4>
+                    <p><span>安全</span><span>准时</span><span>高品质</span></p>
+                    <a class="button banner-button" id="show-video-intro">观看视频介绍</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view cases">
+        <div class="cases-title">
+            <p>已开通<br>学校</p>
+        </div>
+        <div class="cases-list" id="showcase">
+            <div class='cases-list-con'>
+                <span class="case-item" style="background-image:url(https://tva2.sinaimg.cn/crop.0.0.750.750.180/005Ugbtxjw8fcdcayy3mej30ku0ku40m.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva1.sinaimg.cn/crop.0.0.180.180.180/a2a02de7jw1e8qgp5bmzyj2050050aa8.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva2.sinaimg.cn/crop.0.0.750.750.180/005Ugbtxjw8fcdcayy3mej30ku0ku40m.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva1.sinaimg.cn/crop.0.0.180.180.180/a2a02de7jw1e8qgp5bmzyj2050050aa8.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva2.sinaimg.cn/crop.0.0.750.750.180/005Ugbtxjw8fcdcayy3mej30ku0ku40m.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva1.sinaimg.cn/crop.0.0.180.180.180/a2a02de7jw1e8qgp5bmzyj2050050aa8.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva2.sinaimg.cn/crop.0.0.750.750.180/005Ugbtxjw8fcdcayy3mej30ku0ku40m.jpg)"></span>
+                <span class="case-item" style="background-image:url(https://tva1.sinaimg.cn/crop.0.0.180.180.180/a2a02de7jw1e8qgp5bmzyj2050050aa8.jpg)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="view evaluate">
+         <h4>在线快捷评估</h4>
+         <div class="evaluate-control">
+             <input type="tel" placeholder="手机号" name="phone" maxlength="14"/>
+         </div>
+         <div class="evaluate-control">
+             <input type="text" placeholder="家庭住址" name="address" id="suggestHome"/>
+         </div>
+         <div class="evaluate-control">
+             <input type="text" placeholder="学校名称" name="school" id="suggestSchool"/>
+         </div>
+         <div class="evaluate-control">
+             <span class="button evaluate-button" id="evaluate-price-button">估算价格</span>
+         </div>
+         <div class="evaluate-help">
+             <input type="checkbox" id="price-desc" style="display:none">
+             <label for="price-desc">查看价格说明&nbsp;&gt;</label>
+             <div class="evaluate-price">
+                 <div class="evaluate-price-title">价格说明</div>
+                 <p>服务费根据家庭住址与学校的距离而定：<br>15公里以内——¥1088／月<br>15-30公里——¥1288／月<br>30公里以上每增加5公里增加¥300/月</p>
+             </div>
+         </div>
+         <div id="mapview"></div>
+         <div id="searchHomeResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="view">
+                <p class="feature-title">上下学服务流程</p>
+            </div>
+            <div class="row feature-process">
+                <div class="view global-padding">
+                    <img class="feature-img" src="img/feature-process2.png">
+                </div>
+            </div>
+            <div class="evaluate-title">
+                <img src="img/evaluate.png" />
+                <div class="clear-both"></div>
+            </div>
+            <div class="row customer-messages" id="custumer-message">
+                <div class="customer-messages-con clearfix" id="customer-messages-con">
+                    <div class="customer-messages-con-box">
+                        <div class="customer-message global-padding">
+                            <img src="https://ww4.sinaimg.cn/thumb300/c260f7abjw1fa3g7xo1t5j20y019c7d4.jpg">
+                            <div class="customer-message-content">
+                                <h4>Annie</h4>
+                                <p>上下学专车真的让我们很放心，特别准时。我们家孩子觉得驾驶员叔叔特别好，很关心孩子！非常感谢你们细心的协调，把我们的需求放在第一。真的很少看见这么负责任的公司 </p>
+                            </div>
+                        </div>
+                        <div class="customer-message global-padding">
+                            <img src="img/Lily.jpeg">
+                            <div class="customer-message-content">
+                                <h4>Lily 欣</h4>
+                                <p>上下学的车子特别新，非常干净，贴的标志也很漂亮，走在路上一眼就能看出来是他们的车。车里面还有空气净化器，这点很惊喜，解决了北京经常有雾霾的问题。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-messages-con-box">
+                        <div class="customer-message global-padding">
+                            <img src="https://ww4.sinaimg.cn/thumb300/c260f7abjw1fa3g7xo1t5j20y019c7d4.jpg">
+                            <div class="customer-message-content">
+                                <h4>Annie</h4>
+                                <p>上下学专车真的让我们很放心，特别准时。我们家孩子觉得驾驶员叔叔特别好，很关心孩子！非常感谢你们细心的协调，把我们的需求放在第一。真的很少看见这么负责任的公司 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view feature">
+            <p class="feature-title" style="background-color: #f9b62d">严格筛选司机</p>
+            <img class="feature-img" src="img/feature-driver.png">
+        </div>
+        <div class="view feature">
+            <p class="feature-title">高端7座商务车</p>
+            <img class="feature-img" src="img/feature-bus.png">
+        </div>
+        <div class="view feature">
+            <p class="feature-title" style="background-color: #694d96">车载空气净化器</p>
+            <img class="feature-img" src="img/feature-air-cleaner.png">
+        </div>
+        <div class="view feature">
+            <p class="feature-title">上下学品牌</p>
+            <img class="feature-img" src="img/feature-brand.png">
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="view footer-inner">
+            <div class="footer-email">
+                <div class="footer-email-item">
+                    <h4>商务合作</h4>
+                    <p>zhaoyue@dakarfleet.com</p>
+                </div>
+                <div class="footer-email-item">
+                    <h4>市场合作</h4>
+                    <p>zhaoyue@dakarfleet.com</p>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <img class="footer-contact-qrcode" src="img/wx-qrcode.png"><!--
+                --><div class="footer-contact-detail">
+                    <a href='tel:4008-910-622' class="footer-tel-link">4008-910-622</a>
+                    <p>微信关注【上下学】公众号</p>
+                </div>
+            </div>
+
+            <p class="footer-copy">Copyright&copy;2017上下学版权所有</p>
+        </div>
+    </div>
+</body>
+<script src="js/lib/iscroll.js"></script>
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/lib/pgwmodal.min.js"></script>
+<script src='js/buy.js'></script>
+<script src='js/index.js'></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    function G(id) {
+        return document.getElementById(id);
+    }
+    var map = new BMap.Map("mapview");
+    map.centerAndZoom("北京",12);                   // 初始化地图,设置城市和地图级别。
+    var achome = new BMap.Autocomplete(    //建立一个自动完成的对象
+        {"input" : "suggestHome"
+        ,"location" : map
+    });
+    achome.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+    var str = "";
+        var _value = e.fromitem.value;
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        G("searchHomeResultPanel").innerHTML = str;
+    });
+
+    var myValue;
+    achome.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+    var _value = e.item.value;
+        myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        G("searchHomeResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+        setPlace();
+    });
+
+    function setPlace(){
+        map.clearOverlays();    //清除地图上所有覆盖物
+        function myFun(){
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18);
+            //map.addOverlay(new BMap.Marker(pp));    //添加标注
+        }
+        var local = new BMap.LocalSearch(map, { //智能搜索
+          onSearchComplete: myFun
+        });
+        local.search(myValue);
+    }
+
+    var acschool = new BMap.Autocomplete(    //建立一个自动完成的对象
+            {"input" : "suggestSchool"
+            ,"location" : map
+        });
+        acschool.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+        var str = "";
+            var _value = e.fromitem.value;
+            var value = "";
+            if (e.fromitem.index > -1) {
+                value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+            }
+            str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+            value = "";
+            if (e.toitem.index > -1) {
+                _value = e.toitem.value;
+                value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+            }
+            str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+            G("searchHomeResultPanel").innerHTML = str;
+        });
+
+        var myValue2;
+        acschool.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+            myValue2 = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+            G("searchHomeResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue2;
+            setPlace2();
+        });
+
+        function setPlace2(){
+            map.clearOverlays();    //清除地图上所有覆盖物
+            function myFun(){
+                var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+                map.centerAndZoom(pp, 18);
+                //map.addOverlay(new BMap.Marker(pp));    //添加标注
+            }
+            var local = new BMap.LocalSearch(map, { //智能搜索
+              onSearchComplete: myFun
+            });
+            local.search(myValue2);
+        }
+
+</script>
+
+
+</html>

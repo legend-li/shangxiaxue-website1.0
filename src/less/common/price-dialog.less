@@ -1,0 +1,53 @@
+@title-fontsize: 14px;
+.price-dialog {
+    text-align: center;
+    &-title,
+    &-callbtn {
+        font-size: @title-fontsize;
+        [data-dpr='2'] & {
+            font-size: @title-fontsize * 2;
+        }
+        [data-dpr='3'] & {
+            font-size: @title-fontsize * 3;
+        }
+    }
+    &-title {
+        margin-bottom: 1em;
+    }
+    &-detail {
+        padding: 1em 0;
+        margin: 0 1em;
+        background-color: #f8f8f8;
+        color: #999;
+        line-height: 2;
+    }
+    &-callbtn {
+        display: block;
+        margin: 1em 0;
+        padding: 1em 0;
+        text-decoration: none;
+    }
+    &-help {
+        color: #999;
+        line-height: 2;
+    }
+
+}
+
+// pc
+@media (min-width: 1200px) and (min-device-width: 737px) {
+    @large-title-fontsize: 18px;
+    .price-dialog {
+        &-title,
+        &-callbtn {
+            font-size: @large-title-fontsize;
+            [data-dpr='2'] & {
+                font-size: @large-title-fontsize * 2;
+            }
+            [data-dpr='3'] & {
+                font-size: @large-title-fontsize * 3;
+            }
+        }
+    }
+
+}

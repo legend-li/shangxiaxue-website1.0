@@ -1,0 +1,102 @@
+@header-fontsize: 13px;
+@header-height: 60px;
+
+@logo-width: 63px;
+@logo-height: 30px;
+@logo-width-em: unit(@logo-width / @header-fontsize, em);
+@logo-height-em: unit(@logo-height / @header-fontsize, em);
+
+@nav-color: #333;
+@nav-selected: #f8b62d;
+
+@import "button.less";
+@import "pgwmodal.less";
+@import "dialog";
+@import "buy-dialog";
+
+.header {
+    font-size: @header-fontsize;
+    line-height: unit(@header-height / @header-fontsize, em);
+    &-inner {
+        display: flex;
+    }
+
+    [data-dpr='2'] & {
+        font-size: @header-fontsize * 2;
+    }
+    [data-dpr='3'] & {
+        font-size: @header-fontsize * 3;
+    }
+
+    // logo
+    &-logo {
+        align-self: center;
+        position: relative;
+        // top: unit((@header-height - @logo-height) / @header-fontsize / 2, em);
+        width: @logo-width-em;
+        height: @logo-height-em;
+        background-image: url('../../img/logo.png');
+        background-size: @logo-width-em @logo-height-em;
+        background-position: 50% 50%;
+    }
+
+    // nav
+    &-nav {
+        margin-left: auto;
+
+        &-links {
+            float: left;
+            margin-right: unit(19px / @header-fontsize, em);
+        }
+
+        &-link {
+            float: left;
+            color: @nav-color;
+            text-decoration: none;
+            &.selected {
+                color: @nav-selected;
+            }
+            &:not(:last-child) {
+                margin-right: unit(19px / @header-fontsize, em);
+            }
+        }
+
+        @button-height: 31px;
+        // button
+        &-button {
+            position: relative;
+            float: right;
+            top: unit((@header-height - @button-height) / @header-fontsize / 2, em);
+            text-decoration: none;
+            line-height: 1;
+            padding: unit(9px / @header-fontsize, em) 1em;
+            // margin-left: unit(15px / @header-fontsize, em);
+        }
+    }
+}
+
+// pc
+@media (min-width: 1200px) and (min-device-width: 737px) {
+    .header {
+        font-size: 16px;
+    }
+
+    .header-logo {
+        width: 6.375em;
+        height: 3.125em;
+        // background-image: url(../../img/logo.png);
+        background-size: 6.375em 3.125em;
+    }
+    .header-nav-links {
+        &,
+        .header-nav-link:not(:last-child) {
+            margin-right: 3em;
+        }
+    }
+    .header-nav-button {
+        top: 0;
+        line-height: inherit;
+        padding: 0 3em;
+        border-radius: 0;
+    }
+}

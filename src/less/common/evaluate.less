@@ -1,0 +1,156 @@
+@import "button.less";
+
+
+.evaluate {
+    margin-top: 1em;
+    text-align: center;
+
+    @h4-fontsize: 14px;
+    @h4-border-color: #eeb133;
+    h4 {
+        display: inline-block;
+        padding: 0 .8em;
+        margin: 2em 0;
+        line-height: 1;
+        color: #333;
+        font-size: @h4-fontsize;
+        border-left: 1px solid @h4-border-color;
+        border-right: 1px solid @h4-border-color;
+        [data-dpr='2'] & {
+            font-size: @h4-fontsize * 2;
+            border-width: 2px;
+        }
+        [data-dpr='3'] & {
+            font-size: @h4-fontsize * 3;
+            border-width: 2px;
+        }
+    }
+
+    @control-padding-horizon: 37.5px;
+    &-control {
+        margin-bottom: 1em;
+        padding-left: @control-padding-horizon;
+        padding-right: @control-padding-horizon;
+        [data-dpr='2'] & {
+            padding-left: @control-padding-horizon * 2;
+            padding-right: @control-padding-horizon * 2;
+        }
+        [data-dpr='3'] & {
+            padding-left: @control-padding-horizon * 3;
+            padding-right: @control-padding-horizon * 3;
+        }
+
+        @input-border-radius: 2px;
+        input {
+            width: 100%;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: @input-border-radius;
+            [data-dpr='2'] & {
+                border-radius: @input-border-radius * 2;
+            }
+            [data-dpr='3'] & {
+                border-radius: @input-border-radius * 3;
+            }
+        }
+    }
+    &-button {
+        display: block;
+        padding: 1em 0;
+    }
+
+    &-help {
+        a {
+            text-decoration: none;
+            color: #999;
+        }
+        :checked + label {
+            display: none;
+        }
+        :checked ~ .evaluate-price {
+            // 显示
+            display: inline-block;
+        }
+    }
+    .evaluate-price {
+        // 隐藏
+        display: none;
+        line-height: 2;
+        color: #999;
+        text-align: left;
+        &-title {
+            color: #666;
+            text-align: center;
+        }
+    }
+}
+
+// suggest
+.tangram-suggestion {
+    [data-dpr='2'] & {
+        border-width: 2px;
+    }
+    [data-dpr='3'] & {
+        border-width: 3px;
+    }
+    table {
+        font-size: inherit !important;
+        tr {
+            td {
+                height: 2.6666666666666665em !important;
+                line-height: 2.6666666666666665em !important;
+                padding: 0 1em !important;
+            }
+        }
+    }
+    .route-icon {
+        padding-left: 0 !important;
+        background-image: none !important;
+    }
+
+}
+
+// pc
+@media (min-width: 1200px) and (min-device-width: 737px) {
+    .evaluate {
+        position: relative;
+        font-size: 18px;
+        text-align: left;
+        h4 {
+            color: #333;
+            font-size: 24px;
+            padding-left: 37.5px;
+            border: none;
+        }
+        &-control {
+            width: 45%;
+        }
+        &-help {
+            label {
+                display: none;
+            }
+
+        }
+        &-price {
+            position: absolute;
+            display: block !important;
+            left: 55%;
+            top: 7em;
+            &-title {
+                text-align: left !important;
+                margin-bottom: 1em;
+            }
+            &:before {
+                position: absolute;
+                content: "";
+                width: 54px;
+                height: 52px;
+                left: -1em;
+                top: -.6em;
+                transform: translate(-100%, 0);
+                background-image: url(../../img/animal-icon.png);
+                background-size: cover;
+            }
+        }
+    }
+}

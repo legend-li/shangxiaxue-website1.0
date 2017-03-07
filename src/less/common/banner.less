@@ -1,0 +1,148 @@
+@banner-bgcolor: #f9b62d;
+
+
+@banner-pic-width: 445px;
+@banner-pic-height: 325px;
+
+@refer-root-fontsize: 75px;
+
+@banner-pic-width-rem: unit(@banner-pic-width / @refer-root-fontsize, rem);
+@banner-pic-height-rem: unit(@banner-pic-height / @refer-root-fontsize, rem);
+
+@import "button.less";
+
+.banner {
+    background-color: @banner-bgcolor;
+    padding-left: 0 !important;
+    overflow: hidden;
+
+    .banner-inner {
+        display: flex;
+        &::before {
+            content: "";
+            display: block;
+            padding-bottom: 45.13888888888889%;
+        }
+    }
+
+    &-pic {
+        width: percentage(445 / (750 - 15 * 2));
+        padding-bottom: percentage(325 / (750 - 15 * 2));
+        background-image: url(../../img/banner.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    @desc-h4-fontsize: 14px;
+    @desc-p-fontsize: 12px;
+    @desc-btn-fontsize: 13px;
+    &-desc {
+        flex: 1;
+        position: relative;
+        color: #d9333e;
+        font-size: 10px;
+        [data-dpr='2'] & {
+            font-size: 20px;
+        }
+        [data-dpr='3'] & {
+            font-size: 30px;
+        }
+
+        &-inner {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        h4 {
+            display: inline-block;
+            font-weight: normal;
+            font-size: unit(@desc-h4-fontsize / 10, em);
+            border-bottom: 1px solid #fbcc6c;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            [data-dpr='2'] & {
+                border-bottom-width: 2px;
+                letter-spacing: 2px;
+            }
+            [data-dpr='3'] & {
+                border-bottom-width: 3px;
+                letter-spacing: 3px;
+            }
+        }
+        p {
+            font-size: unit(@desc-p-fontsize / 10, em);
+            margin-bottom: 1em;
+            margin-top: .4em;
+
+            > span:not(:last-child) {
+                margin-right: .5em;
+            }
+        }
+    }
+
+    &-button {
+        background-color: #d9333e;
+        font-size: unit(@desc-btn-fontsize / 10, em);
+        padding: .5em 1.5em;
+    }
+}
+
+@media (min-width: 641px) and (min-device-width: 376px) {
+    .banner {
+        &-desc {
+            font-size: 14px;
+            [data-dpr='2'] & {
+                font-size: 28px;
+            }
+            [data-dpr='3'] & {
+                font-size: 42px;
+            }
+        }
+    }
+}
+@media (min-width: 751px) and (min-device-width: 415px) {
+    .banner {
+        &-desc {
+            font-size: 16px;
+            [data-dpr='2'] & {
+                font-size: 32px;
+            }
+            [data-dpr='3'] & {
+                font-size: 48px;
+            }
+        }
+    }
+}
+
+// pc
+@media (min-width: 1200px) and (min-device-width: 737px) {
+    .banner {
+       height: 628px;
+       &-pic {
+           width: @banner-pic-width-rem * 2.9;
+           height: @banner-pic-height-rem * 2.9;
+           background-size: @banner-pic-width-rem * 2.9 @banner-pic-height-rem * 2.9;
+       }
+    }
+    .banner-desc {
+        font-size: 22px;
+
+        right: 2em;
+        &-inner {
+            top: 35%;
+        }
+        h4 {
+            font-size: 32px;
+        }
+        p {
+            font-size: 22px;
+        }
+    }
+    .banner-button {
+        font-size: 18px;
+        padding: .8em 5em;
+    }
+}

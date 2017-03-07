@@ -1,0 +1,47 @@
+body {
+    word-break: break-all;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: 'liga','kern';
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@padding-horizon: 15px;
+.global-padding {
+    padding-left: @padding-horizon;
+    padding-right: @padding-horizon;
+    [data-dpr='2'] & {
+        padding-left: @padding-horizon * 2;
+        padding-right: @padding-horizon * 2;
+    }
+    [data-dpr='3'] & {
+        padding-left: @padding-horizon * 3;
+        padding-right: @padding-horizon * 3;
+    }
+}
+
+@media (min-width: 1200px) and (min-device-width: 737px){
+    .view {
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .row {
+        width: 100%;
+    }
+}
+
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}

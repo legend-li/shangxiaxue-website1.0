@@ -1,0 +1,28 @@
+@rounded-radius: 2px;
+@color: #fff;
+@bg-color: #f8b62d;
+.button {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    border-radius: @rounded-radius;
+    overflow: hidden;
+    vertical-align: middle;
+    color: @color;
+    background-color: @bg-color;
+
+    [data-dpr='2'] & {
+        border-radius: @rounded-radius * 2;
+    }
+    [data-dpr='3'] & {
+        border-radius: @rounded-radius * 3;
+    }
+
+    // focus
+    &:focus {
+       outline: none;
+    }
+}
