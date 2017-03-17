@@ -1,7 +1,8 @@
 .features {
     margin-top: 3em;
     .feature {
-
+        
+        @evaluate-fontsize: 14px;
         @title-fontsize: 14px;
         @title-line-horizon: 37.5px;
         &-title {
@@ -79,13 +80,15 @@
             }
         }
         .evaluate-title{
+            position: relative;
             z-index: 5;
             width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 1em auto 0px;
             img{
                 float: right;
                 width: 17.48%;
+                max-width: 130px;
                 height: auto;
             }
             .clear-both{
@@ -96,19 +99,17 @@
         .customer-messages {
             position: relative;
             max-width: 1200px;
-            height: 150px;
+            height: 180px;
             overflow: hidden;
-            margin-top: 1.6666666666666667em;
+            /*margin-top: 1.6666666666666667em;*/
             margin-bottom: 3em;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
             background-color: #f3f3f3;
-            font-size: @title-fontsize;
             [data-dpr='2'] & {
-                font-size: @title-fontsize * 2;
+                height: 180px * 1.5;
             }
             [data-dpr='3'] & {
-                font-size: @title-fontsize * 3;
+                height: 180px * 2;
             }
             &-con {
                 position: absolute;
@@ -123,13 +124,28 @@
                 /*float: left;*/
                 min-width: 100%;
                 max-width: 100%;
-                height: 150px;
+                height: 180px;
+                overflow: hidden;
                 padding-top: 1em;
                 padding-bottom: 1em;
                 margin-right: auto;
                 margin-bottom: auto;
                 flex-basis: auto;
                 flex-wrap: nowrap;
+                font-size: 14px;
+                font-size: @evaluate-fontsize;
+                [data-dpr='2'] & {
+                    font-size: @evaluate-fontsize * 1.5;
+                }
+                [data-dpr='3'] & {
+                    font-size: @evaluate-fontsize * 2;
+                }
+                [data-dpr='2'] & {
+                    height: 180px * 1.5;
+                }
+                [data-dpr='3'] & {
+                    height: 180px * 2;
+                }
                 img {
                     width: 4.166666666666667em;
                     height: 4.166666666666667em;
@@ -168,6 +184,11 @@
                &:after {
                    display: none;
                }
+            }
+            .customer-messages{
+                .customer-message{
+                    font-size: 16px;
+                }
             }
         }
     }

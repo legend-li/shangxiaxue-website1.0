@@ -128,14 +128,20 @@
         },10)
     }
     var evaluateCon = $('#customer-messages-con');
-    var evaluateConH = evaluateCon.height()-150;
+    var evaluateH = $('#customer-message').height();
+    var evaluateConH = evaluateCon.height()-evaluateH;
     setInterval(function() {
         var top = parseInt(evaluateCon.css('top'));
         if(evaluateConH+top<=0){
             evaluateCon.css('top', '0px')
             top = parseInt(evaluateCon.css('top'));
         }
-        animate( evaluateCon, 'top', top, top-150, 5);
+        animate( evaluateCon, 'top', top, top-evaluateH, 5);
     },5000);
 
+    //控制家长评价图标位置
+    var evaluateTitle = $("#evaluate-title");
+    var evaluateTitleH = evaluateTitle.height();
+    var moveTop = evaluateTitleH*0.79;
+    $("#custumer-message").css('top','-'+moveTop+'px');
 })()
