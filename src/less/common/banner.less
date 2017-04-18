@@ -26,11 +26,16 @@
     }
 
     &-pic {
+		display: block;
         width: percentage(445 / (750 - 15 * 2));
-        padding-bottom: percentage(325 / (750 - 15 * 2));
-        background-image: url(../../img/banner.png);
-        background-repeat: no-repeat;
-        background-size: contain;
+        margin: 0;
+    	padding: 0;
+    	border: none;
+    	outline: 0;
+		//padding-bottom: percentage(325 / (750 - 15 * 2));
+        //background-image: url(../../img/banner.png);
+        //background-repeat: no-repeat;
+        //background-size: contain;
     }
 
     @desc-h4-fontsize: 14px;
@@ -124,7 +129,7 @@
        &-pic {
            width: @banner-pic-width-rem * 2.9;
            height: @banner-pic-height-rem * 2.9;
-           background-size: @banner-pic-width-rem * 2.9 @banner-pic-height-rem * 2.9;
+           //background-size: @banner-pic-width-rem * 2.9 @banner-pic-height-rem * 2.9;
        }
     }
     .banner-desc {
